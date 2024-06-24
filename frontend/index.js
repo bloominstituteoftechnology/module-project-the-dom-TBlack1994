@@ -7,10 +7,18 @@ function moduleProject1() {
 
   // 👉 TASK 1 - Add a "widget" class name to widgets so CSS kicks in
   //  ✨ add your code here
-
+  const widgets = document.querySelectorAll('section>div');
+  widgets.forEach(widget => {
+    widget.classList.add('widget')
+  })
   // 👉 TASK 2 - Build a "Quote of the Day" widget
   //  ✨ add your code here
-
+    const randomIdx = Math.floor(Math.random() * quotes.length)
+    const randomQuote = quotes[randomIdx] //eslint-disable-line
+    const quote = document.createElement('div')
+    const quoteText = randomQuote.quote 
+    quote.textContent = quoteText
+    console.log(quote)
   // 👉 TASK 3 - Build a "Corporate Speak" widget
   //  ✨ add your code here
 

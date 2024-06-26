@@ -13,12 +13,17 @@ function moduleProject1() {
   })
   // 👉 TASK 2 - Build a "Quote of the Day" widget
   //  ✨ add your code here
-    const randomIdx = Math.floor(Math.random() * quotes.length)
+    const randomIdx = Math.floor(Math.random() * quotes.length) //eslint-diable-line
     const randomQuote = quotes[randomIdx] //eslint-disable-line
     const quote = document.createElement('div')
-    const quoteText = randomQuote.quote 
+    const quoteText = randomQuote.quote
     quote.textContent = quoteText
-    console.log(quote)
+   const widget1 = document.querySelector('.quoteoftheday')
+   widget1.appendChild(quote)
+   const authorDate = document.createElement('div')
+   const { author, date } = randomQuote
+   authorDate.textContent = `${author} in ${date || "an unknown date"}`
+   widget1.appendChild(authorDate)
   // 👉 TASK 3 - Build a "Corporate Speak" widget
   //  ✨ add your code here
 

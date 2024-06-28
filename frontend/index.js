@@ -13,7 +13,7 @@ function moduleProject1() {
   })
   // 👉 TASK 2 - Build a "Quote of the Day" widget
   //  ✨ add your code here
-    const randomIdx = Math.floor(Math.random() * quotes.length) //eslint-diable-line
+    const randomIdx = Math.floor(Math.random() * quotes.length) //eslint-disable-line
     const randomQuote = quotes[randomIdx] //eslint-disable-line
     const quote = document.createElement('div')
     const quoteText = randomQuote.quote
@@ -24,15 +24,59 @@ function moduleProject1() {
    const { author, date } = randomQuote
    authorDate.textContent = `${author} in ${date || "an unknown date"}`
    widget1.appendChild(authorDate)
-  // 👉 TASK 3 - Build a "Corporate Speak" widget
+  // 👉 TASK 3 - Build a "Corporate Speak" widget 
   //  ✨ add your code here
-
+  const randomVerb1 = verbs[Math.floor(Math.random() * verbs.length)] //eslint-disable-line
+  const randomVerb2 = verbs[Math.floor(Math.random() * verbs.length)] //eslint-disable-line
+  const randomAdverb1 = adverbs[Math.floor(Math.random() * adverbs.length)] //eslint-disable-line
+  const randomAdverb2 = adverbs[Math.floor(Math.random() * adverbs.length)] //eslint-disable-line
+  const randomNoun1 = nouns[Math.floor(Math.random() * nouns.length)] //eslint-disable-line
+  const randomNoun2 = nouns[Math.floor(Math.random() * nouns.length)] //eslint-disable-line
+const mumboJumbo= `We need to ${randomVerb1} our ${randomNoun1} ${randomAdverb1} in order to ${randomVerb2} our ${randomNoun2} ${randomAdverb2}.`
+const paragraph = document.createElement('p')
+paragraph.textContent = mumboJumbo
+document.querySelector('.corporatespeak').appendChild(paragraph)
   // 👉 TASK 4 - Build a "Countdown" widget
   //  ✨ add your code here
-
+const countdownWidget = document.querySelector('.countdown')
+let count = 5
+const countdown = document.createElement('p')
+countdownWidget.appendChild(countdown)
+setInterval(() => {
+  if (count === 1){
+    countdown.textContent = 'Liftoff! 🚀'
+  } else {
+    countdown.textContent = `T-minus ${count}...`
+    count--
+}
+}, 1000)
   // 👉 TASK 5 - Build a "Friends" widget
   //  ✨ add your code here
-
+const person = people[Math.floor(Math.random() * people.length)]
+const personParagraph = document.createElement('p')
+document.querySelector('.friends').appendChild(personParagraph)
+const year = person.dateOfBirth.split('-')[0]
+let sentance = `${person.fname} ${person.lname} was born in ${year} and `
+if (!person.friends.length) {
+  sentance += 'has no friends.'
+} else {
+  sentance += 'is friends with '
+  for (let idx = 0; idx < person.friends.length; idx++){
+    const friendId = person.friends[idx]
+    const friend = people.find(p => p.id === friendId)
+  const fullName = `${friend.fname} ${friend.lname}`
+    let isLastIdx = idx === person.friends.length - 1
+    let isNextToLastIdx = idx === person.friends.length - 2
+    if (isLastIdx){
+        sentance += `${fullName}.`
+    } else if (isNextToLastIdx){
+      sentance += `${fullName} and `
+    } else{
+      sentance += `${fullName}, `
+    }
+  }
+}
+personParagraph.textContent = sentance
   // 👉 TASK 6 - Make it so user can tab through the widgets
   //  ✨ add your code here
 
